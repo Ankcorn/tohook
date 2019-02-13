@@ -11,7 +11,7 @@ const removeSchema = tcomb.struct(
 async function remove(req, res) {
   try {
     const result = await Todo.findByIdAndDelete(req.params.id);
-    return res.send({ id: result._id, status: 'Deleted' });
+    return res.send({ id: result._id, status: 'Todo Deleted' });
   } catch (e) {
     return res.status(500).send('An error occurred: ' + e);
   }

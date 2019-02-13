@@ -7,7 +7,8 @@ const Todo = mongoose.model('Todo', {
   tasks: [
     {
       description: String,
-      done: { type: Boolean, default: false }
+      done: { type: Boolean, default: false },
+      order: Number
     }
   ],
   done: { type: Boolean, default: false },
