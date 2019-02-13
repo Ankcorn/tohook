@@ -25,6 +25,9 @@ app.post('/todo', protection(), validate(Todo.createSchema), Todo.create);
 
 app.get('/todo', protection(), validate(Todo.getSchema), Todo.get);
 
+app.put('/todo', protection(), validate(Todo.updateSchema), Todo.update);
+
+app.delete('/todo/:id', protection(), validate(Todo.removeSchema), Todo.remove);
 app.listen(4000, () => {
   console.log('server started on port 4000');
 });
