@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  api:
+    image: todo:latest
+    build: server
+    restart: always
+    depends_on:
+      - mongo
+    ports:
+      - "4000:4000"
+  mongo:
+    image: mongo
+    restart: always
