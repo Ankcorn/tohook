@@ -9,6 +9,11 @@ services:
       - mongo
     ports:
       - "4000:4000"
+    environment:
+      - PORT=4000
+      - HOST=0.0.0.0
+      - MONGO="mongodb://mongo:27017/todo?retryWrites=true"
+      - SECRET="Anyway the wind blows, doesn't really matter to me, to me"
   mongo:
     image: mongo
     restart: always

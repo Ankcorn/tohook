@@ -8,7 +8,7 @@ const Todo = require('./todo');
 const Task = require('./task');
 
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load();
+  require('dotenv').load('../env.production.local');
 }
 
 require('./db/init');
@@ -38,7 +38,7 @@ app.put('/todo/task/:taskid', protection(), validate(Task.updateTaskSchema), Tas
 app.delete('/todo/task/:taskid', protection(), validate(Task.deleteTaskSchema), Task.deleteTask);
 
 app.listen(process.env.PORT, process.env.HOST, () => {
-  console.log(`server started on port http://${process.env.HOST}:${process.env.}`);
+  console.log(`server started on port http://${process.env.HOST}:${process.env.PORT}`);
 });
 
 module.exports = app;
