@@ -6,6 +6,11 @@ const User = require('./db/user.model');
 const validate = require('tcomb-validation-middleware');
 const Todo = require('./todo');
 const Task = require('./task');
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
+
 require('./db/init');
 
 const app = express();
@@ -32,8 +37,8 @@ app.put('/todo/task/:taskid', protection(), validate(Task.updateTaskSchema), Tas
 
 app.delete('/todo/task/:taskid', protection(), validate(Task.deleteTaskSchema), Task.deleteTask);
 
-app.listen(4000, () => {
-  console.log('server started on port 4000');
+app.listen(process.env.PORT, process.env.HOST, () => {
+  console.log(`server started on port http://${process.env.HOST}:${process.env.}`);
 });
 
 module.exports = app;

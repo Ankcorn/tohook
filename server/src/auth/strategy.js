@@ -18,7 +18,7 @@ function AuthStrategy(user) {
   return new JWTStrategy(
     {
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'ILovePokemon'
+      secretOrKey: process.env.SECRET
     },
     getUser
   );

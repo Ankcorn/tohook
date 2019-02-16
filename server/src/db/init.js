@@ -1,3 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://mongo:27017/todos', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO, {
+  useCreateIndex: true,
+  useNewUrlParser: true
+});

@@ -26,7 +26,7 @@ router.post('/login', validate(user), passport.authenticate('local', { session: 
   const { id, username } = req.user;
   req.login(user, { session: false }, err => {
     if (err) return res.status(403).send(err);
-    const token = jwt.sign({ id, email: username }, 'ILovePokemon');
+    const token = jwt.sign({ id, email: username }, process.env.SECRET);
     return res.send({ user: username, token });
   });
 });
