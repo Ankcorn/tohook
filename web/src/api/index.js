@@ -13,8 +13,6 @@ export async function check() {
         Authorization: `bearer ${jwt}`
       }
     })
-    console.log('checked')
-    console.log(true)
     return true
   } catch (e) {
     return false
