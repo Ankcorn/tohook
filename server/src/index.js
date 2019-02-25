@@ -23,6 +23,8 @@ const { auth, protection } = useJwtAuth(passport, User);
 
 app.use('/auth', auth);
 
+app.get('/check', protection(), (req, res) => res.send({ status: 'okay' }));
+
 app.post('/todo', protection(), validate(Todo.createSchema), Todo.create);
 
 app.get('/todo', protection(), validate(Todo.getSchema), Todo.get);

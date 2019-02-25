@@ -15,10 +15,10 @@ import api from '../api';
 
 function useCustomHook() {
   const [ todos, setTodos ] = useState();
-  
+  const [ update, setUpdate ] = useState(false);
   useEffect(() => {
     getTodos()
-  }, [])
+  }, [update])
   
   async function getTodos() {
     const todos = await api.getTodo()
@@ -26,7 +26,7 @@ function useCustomHook() {
   }
   async function addTodo(description) {
     await api.addTodo(description);
-    await getTodos()
+    setUpdate(!update)
   }
   async function updateTodo(id, object) {
     await api.updateTodo(id, object)
